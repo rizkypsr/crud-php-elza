@@ -39,7 +39,7 @@
 
         // Insert user data ke tabel database
         $result = mysqli_query($mysqli, 
-            "INSERT INTO users (name, email, mobile) VALUES ('$name', '$email', '$mobile')");
+            "INSERT INTO data_users (name, email, mobile) VALUES ('$name', '$email', '$mobile')");
 
         header("Location:index.php");
     }
