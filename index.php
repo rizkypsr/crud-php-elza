@@ -3,8 +3,15 @@
 // Import file config untuk koneksi ke database
 include_once 'config.php';
 
+session_start();
+
+// Cek apakah sudah login atau belum, jika belum tampilkan halaman login
+if (!isset($_SESSION['username'])) {
+    header("Location: login.php");
+}
+
 // Ngambil data dari database, isi nye disimpan di variabel result
-$result = mysqli_query($mysqli, "SELECT * FROM users");
+$result = mysqli_query($mysqli, "SELECT * FROM data_users");
 
 ?>
 
@@ -20,7 +27,8 @@ $result = mysqli_query($mysqli, "SELECT * FROM users");
 <body>
     
     <div class="container mt-3">
-        <a href="add.php" class="btn btn-success">Tambah User</a> <br><br>
+        <a href="add.php" class="btn btn-success">Tambah User</a>
+        <a href="action-logout.php" class="btn btn-warning">Log out</a> <br><br>
 
         <table class="table" width="80%" border=1>
             <thead class="thead-dark">
